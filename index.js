@@ -31,23 +31,20 @@ app.post('/webhook', (req, res) => {
     const topicName = response.data.topic.name; // Extract topic name from Zendesk API response
     const postTitle = req.body.event.title; // Extract post title from webhook payload
 
-    const slackWebhookUrl = 'https://hooks.slack.com/services/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';
+    const slackWebhookUrl = 'https://hooks.slack.com/services/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';
     const slackMessage = {
       text: `A new community post has been created for the topic "${topicName}" and the topic title is "${postTitle}"`
     };
 
     // Send a message to Slack
-  axios.post(slackWebhookUrl, slackMessage, {
-      headers: {
-        'Content-Type': 'application/json'
-      }
-    })
-    .then(slackResponse => {
-      console.log('Message sent to Slack:', slackResponse.data);
-    })
-    .catch(slackError => {
-      console.error('Error sending message to Slack:', slackError.response ? slackError.response.data : slackError);
-    });
+ axios.post(slackWebhookUrl, slackMessage)
+      .then(slackResponse => {
+        console.log('Message sent to Slack:', slackResponse.data);
+      })
+      .catch(slackError => {
+        console.error('Error sending message to Slack:', slackError);
+      });
+
 
 
     // Respond to the initial webhook
