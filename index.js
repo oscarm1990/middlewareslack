@@ -31,7 +31,7 @@ app.post('/webhook', (req, res) => {
     const topicName = response.data.topic.name; // Extract topic name from Zendesk API response
     const postTitle = req.body.event.title; // Extract post title from webhook payload
 
-    const slackWebhookUrl = 'https://hooks.slack.com/services/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';
+    const slackWebhookUrl = 'https://hooks.slack.com/services/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';
     const slackMessage = {
       text: `A new community post has been created for the topic "${topicName}" and the topic title is "${postTitle}"`
     };
